@@ -15,11 +15,25 @@
     <div id="container">
 
     </div>
+    <div id="pay">
+        
+        <a href="./payment.html"><p>Go to Payment Page</p></a>
+    </div>
+    <div id="cart">
+
+    </div>
+    <div >
+        <button id="cle">clear cart</button>
+
+    </div>
 </body>
 <script>
     var x=JSON.parse(localStorage.getItem('cart'))
+var sum=0
+    function display(){
     document.querySelector('#container').innerHTML=''
   var y=document.querySelector('#container')
+  
   x.forEach(ele=>{
     var div1=document.createElement('div');
   var name=document.createElement('h2');
@@ -31,14 +45,32 @@
   image.setAttribute('src',ele.image_url)
   price.innerText=ele.price;
   rate.innerText=ele.rating;
-  remove.innerText='Remove From Cart'
-  remove.addEventListener('click',function(){
-      localStorage.removeItem(ele);
-  })
+  sum+=ele.price;
+//   remove.innerText='Remove From Cart'
+//   remove.addEventListener('click',function(){
+//       localStorage.removeItem('ele');
+//   })
   
-  div1.append(name,image,rate,price,remove);
+  div1.append(name,image,rate,price);
   y.append(div1);
  
   });
+  var div=document.querySelector('#cart');
+  var b=document.createElement('b')
+  var b1=document.createElement('b')
+  b.innerText='Value of Cart:-'
+  b1.innerText=sum;
+  b1.style.color='green';
+  div.append(b,b1)}
+  display(x)
+document.querySelector('#cle').addEventListener('click',function(){
+    sum=0
+    event.preventDefault();
+    x=localStorage.clear();
+    
+    document.querySelector('#cart').innerHTML=''
+
+    display(x)
+})
 </script>
 </html>
