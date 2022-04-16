@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="home">
+        <div><a href="./index.html">Home</a></div>
+        <div><a href="./cart.html">Cart</a></div>
+        <div><a href="./payment.html">Payment</a></div>
+    </div>
+    <div id="container">
+
+    </div>
+</body>
+<script>
+    var x=JSON.parse(localStorage.getItem('cart'))
+    document.querySelector('#container').innerHTML=''
+  var y=document.querySelector('#container')
+  x.forEach(ele=>{
+    var div1=document.createElement('div');
+  var name=document.createElement('h2');
+  var image=document.createElement('IMG');
+  var rate=document.createElement('p');
+  var price=document.createElement('h3');
+  var remove=document.createElement('button');
+  name.innerText=ele.name;
+  image.setAttribute('src',ele.image_url)
+  price.innerText=ele.price;
+  rate.innerText=ele.rating;
+  remove.innerText='Remove From Cart'
+  remove.addEventListener('click',function(){
+      localStorage.removeItem(ele);
+  })
+  
+  div1.append(name,image,rate,price,remove);
+  y.append(div1);
+ 
+  });
+</script>
+</html>
