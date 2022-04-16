@@ -12,5 +12,26 @@
         <div><a href="./cart.html">Cart</a></div>
         <div><a href="./payment.html">Payment</a></div>
     </div>
+    <form id="abc">
+    <input type="text" placeholder="cardNumber" id="cn"/>
+    <input type="text" placeholder="Nmae On Card" id='nc'/>
+    <input type="number" placeholder="cvv" id="cvv">
+    <input type="number" placeholder="year of expiry" id="ye">
+    <input type="submit">
+    </form>
 </body>
+<script>
+    var cn=document.querySelector('#cn')
+    var nc=document.querySelector('#nc')
+    var cvv=document.querySelector('#cvv')
+    var ye=document.querySelector('#ye')
+    document.querySelector('#abc').addEventListener('submit',function(){
+        if(cn.value.length!=0 && nc.value!=null && cvv.value.length==3 && ye!=null){
+        alert('order successfull')
+        }else{
+            alert('not successfull')
+        }
+    })
+</script>
+
 </html>
